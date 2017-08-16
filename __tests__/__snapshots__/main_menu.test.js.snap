@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main menu renders correctly 1`] = `
+<div
+  className="div-main-menu undefined"
+>
+  <div
+    className="div-user-block"
+  >
+    <div
+      className="div-user-photo"
+    >
+      <span
+        className="glyphicon glyphicon-user"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="div-user-name"
+    >
+      User Name
+    </div>
+  </div>
+  <div
+    className="div-main-menu-menu"
+  >
+    <button>
+      Menu 1
+    </button>
+    <button>
+      Menu 2
+    </button>
+    <button>
+      Menu 3
+    </button>
+  </div>
+  <div
+    className="div-main-menu-logout"
+  >
+    <button>
+      Logout
+    </button>
+  </div>
+</div>
+`;

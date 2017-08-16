@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video lists render correctly 1`] = `
+<div
+  className="div-content-list"
+>
+  <ContentItemList
+    pageId="video-list"
+  />
+  <ContentItemList
+    pageId="video-list"
+  />
+  <ContentItemList
+    pageId="video-list"
+  />
+  <LoadMoreButton />
+</div>
+`;
