@@ -15,28 +15,26 @@ import fetchContent from "../data/mainContent";
 function ContentItemList(props) {
 
     let content = props.contentData;
-
+    let thumbnailClass;
+    
     //its possible to limit the amount of characters on a title or description this way
     let title = content.title.substring(0,35) + "...";
     let description = content.description.substring(0,55) + "...";
-    let thumbnailUrl, thumbnailClass;
-
+    
     switch(props.pageId) {
         case "video-list":
             thumbnailClass = "thumbnail-large";
-            thumbnailUrl = content.thumbnailLarge;
             break;
         case "side-video-list":
             thumbnailClass = "thumbnail-medium";
-            thumbnailUrl = content.thumbnailMedium;
             break;
     }
-
+     
     return (
         <div id={"content_"+content.index}>
             <div className={thumbnailClass}>
                 <DetailViewLink contentId={content.id}>
-                    <img src={thumbnailUrl} />
+                    <img src={content.thumbnail} />
                 </DetailViewLink>
             </div>
             <div className="title">
@@ -257,10 +255,19 @@ function VideoList(props) {
     let loadMoreAction = props.loadMoreAction();
 
     let pageComponents = [];
+
     //get each content item and call a component to render it
-    props.contentArray.slice(0).reverse().map((item) => {
-        pageComponents.push(<ContentItemList pageId="video-list" key={item.id} contentData={fetchContent(props.contentArray, item.id)} />);
-    });
+    for(var key in props.contentArray) {
+        if(props.contentArray.hasOwnProperty(key)) {
+            pageComponents.push(
+                <ContentItemList 
+                    pageId="video-list" 
+                    key={key} 
+                    contentData={fetchContent(props.contentArray, key)} 
+                />
+            );
+        }
+    }
 
     return(
         <div className="div-content-list">
@@ -281,12 +288,15 @@ function SideVideoList(props) {
     let loadMoreAction = props.loadMoreAction();
     
     let pageComponents = [];
+    
     //get each content item and call a component to render it, dont display the current item in detail view
-    props.contentArray.slice(0).reverse().map((item) => {
-        if(item.id !== props.contentId) {
-            pageComponents.push(<ContentItemList pageId="side-video-list" key={item.id} contentData={fetchContent(props.contentArray, item.id)} />);
+    for(var key in props.contentArray) {
+        if(props.contentArray.hasOwnProperty(key)) {
+            if(key !== props.contentId) {
+                pageComponents.push(<ContentItemList pageId="side-video-list" key={key} contentData={fetchContent(props.contentArray, key)} />);
+            }
         }
-    });
+    }
 
     return(
         <div className="div-side-content-list">

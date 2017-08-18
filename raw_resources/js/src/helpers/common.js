@@ -7,17 +7,16 @@
  * @param {int} itemId - A specific item ID.
  */
 function buildApiUrl(requestSearchTerm, reqPage, itemLimit, itemId) {
-    let apiUrl = "http://api.joinolx.com/api/v1/videos";
-    let apiToken = "olx-token=0a896ba98dacbd3f438050fc80d2a9e359059276";
+    let apiUrl = "http://localhost:3000/videos";
 
     if(itemId) {
-        return apiUrl+"/"+itemId+"?"+apiToken;
+        return apiUrl+"/"+itemId;
     }
 
     apiUrl += requestSearchTerm ? "/search?q="+ requestSearchTerm + "&" : "?" ;
     let apiPage = "&page="+reqPage;
     let apiLimit = "&limit="+itemLimit;
-    return apiUrl+apiToken+apiPage+apiLimit;
+    return apiUrl+apiPage+apiLimit;
 }
 /**
  * In order to implement a very basic URL router, this method helps with retrieving URL data.

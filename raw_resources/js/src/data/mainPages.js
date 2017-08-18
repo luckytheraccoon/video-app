@@ -14,7 +14,6 @@ import { VideoDetail, VideoList, SideVideoList } from "../components/common";
  * @param {string} loadMoreResultsAction - Pass down from parent component what action should occur when we try to load more content.
  */
 export default (contentArray, pageId, contentId, loadMoreResultsAction, setTitleAction) => {
-
     let pages = {
         "video-detail": {
             title: "Video Detail",

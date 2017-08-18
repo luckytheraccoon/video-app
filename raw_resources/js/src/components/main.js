@@ -41,7 +41,7 @@ class MainContainer extends React.PureComponent {
         this.getRequestVideo = getUrlParameter('video');
 
         //the content array is where our current content is sitting, waiting to get rendered somehow
-        this.contentArray = [];
+        this.contentArray = {};
         //how many items should we load per request?
         this.maxItemsPerPage = 9;
         //the main content page object that's currently going to be rendered as the central scene
@@ -50,7 +50,7 @@ class MainContainer extends React.PureComponent {
         this.visibleClass = "elementVisible";
         this.hiddenClass = "elementHidden";
         //the title of the window
-        this.DocumentTitle = "OLX Challenge"; 
+        this.DocumentTitle = "Video App"; 
 
         this.state = {
             //this represents a content item
@@ -252,13 +252,13 @@ class MainContainer extends React.PureComponent {
         fetch(apiUrl).then(function (response) {
             return response.json();
         }).then(function (response) {
-
+            
             let pageId = "video-list";
 
             //map each item onto an array of content 
-            response.resource.map((item) => {
+            response.map((item) => {
                 item.index = itemIndexCounter;
-                this.contentArray[item.id] = item;
+                this.contentArray[item._id] = item;
                 itemIndexCounter++;
             });
             
@@ -300,14 +300,14 @@ class MainContainer extends React.PureComponent {
             let pageId = "video-detail";
 
             //map the obtained item onto an array of content 
-            let item = response.resource;
-            this.contentArray[item.id] = item;
+            let item = response;
+            this.contentArray.push(item);
 
-            this.setPage(pageId, item.id);
+            this.setPage(pageId, item._id);
             
             this.setState({
                 pageId: pageId,
-                contentId: item.id,
+                contentId: item._id,
                 contentLoaded: true,
                 pageTitle: this.centerPage.title
             });
@@ -354,7 +354,6 @@ class MainContainer extends React.PureComponent {
      * Pretty much on rendering the scene, we decide which elements to show or hide based on specific conditions.
      */
     render() {
-
         //get the page to show, can be a list or a detail view
         //while the content is loading...
         let scene = <div className="div-loading"> Content is loading ... </div>;
@@ -453,7 +452,7 @@ function Footer() {
             <div>Footer 1</div>
             <div>Footer 2</div>
             <div>Footer 3</div>
-            <div>OLX Copyright 2017</div>
+            <div></div>
         </div>
     );
 }

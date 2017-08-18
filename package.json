@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start":"nodemon server.js",
+    "start": "nodemon server.js",
     "start:dev": "npm-run-all --parallel css js:dev",
     "start:prod": "npm-run-all --parallel css js:prod",
     "js:dev": "npm-run-all build:dev",
@@ -81,5 +81,10 @@
     "setupFiles": [
       "./setupJest.js"
     ]
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "mongoose": "^4.11.7"
   }
 }
