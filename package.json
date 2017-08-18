@@ -1,9 +1,10 @@
 {
-  "name": "olxchallenge",
+  "name": "video-app",
   "version": "1.0.7",
   "description": "",
   "main": "index.html",
   "scripts": {
+    "start":"nodemon server.js",
     "start:dev": "npm-run-all --parallel css js:dev",
     "start:prod": "npm-run-all --parallel css js:prod",
     "js:dev": "npm-run-all build:dev",
@@ -43,6 +44,7 @@
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "express": "^4.15.4",
     "file-loader": "^0.11.2",
     "jest": "^19.0.2",
     "jest-fetch-mock": "^1.2.1",
@@ -51,6 +53,7 @@
     "loglevel": "^1.4.1",
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "onchange": "^3.2.1",
     "prop-types": "^15.5.10",
