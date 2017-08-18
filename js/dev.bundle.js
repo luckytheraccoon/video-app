@@ -23163,8 +23163,10 @@ var MainContainer = function (_React$PureComponent) {
 
                 var pageId = "video-list";
 
+                console.log(response);
+
                 //map each item onto an array of content 
-                response.map(function (item) {
+                response.videos.map(function (item) {
                     item.index = itemIndexCounter;
                     _this2.contentArray[item._id] = item;
                     itemIndexCounter++;
@@ -23207,15 +23209,11 @@ var MainContainer = function (_React$PureComponent) {
 
                 var pageId = "video-detail";
 
-                //map the obtained item onto an array of content 
-                var item = response;
-                this.contentArray.push(item);
-
-                this.setPage(pageId, item._id);
+                this.setPage(pageId, response._id);
 
                 this.setState({
                     pageId: pageId,
-                    contentId: item._id,
+                    contentId: response._id,
                     contentLoaded: true,
                     pageTitle: this.centerPage.title
                 });

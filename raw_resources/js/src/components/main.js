@@ -253,10 +253,12 @@ class MainContainer extends React.PureComponent {
             return response.json();
         }).then(function (response) {
             
-            let pageId = "video-list";
+            const pageId = "video-list";
+
+            console.log(response);
 
             //map each item onto an array of content 
-            response.map((item) => {
+            response.videos.map((item) => {
                 item.index = itemIndexCounter;
                 this.contentArray[item._id] = item;
                 itemIndexCounter++;
@@ -291,23 +293,19 @@ class MainContainer extends React.PureComponent {
     requestItem(contentId) {
 
         //call helper function to build the URL to fetch data from server
-        let apiUrl = buildApiUrl(null, null, null, contentId);
+        const apiUrl = buildApiUrl(null, null, null, contentId);
         //finally execute ajax request, process the json response from API
         fetch(apiUrl).then(function (response) {
             return response.json();
         }).then(function (response) {
 
-            let pageId = "video-detail";
+            const pageId = "video-detail";
 
-            //map the obtained item onto an array of content 
-            let item = response;
-            this.contentArray.push(item);
-
-            this.setPage(pageId, item._id);
+            this.setPage(pageId, response._id);
             
             this.setState({
                 pageId: pageId,
-                contentId: item._id,
+                contentId: response._id,
                 contentLoaded: true,
                 pageTitle: this.centerPage.title
             });

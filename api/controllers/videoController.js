@@ -4,11 +4,17 @@ var mongoose = require('mongoose'),
     Video = mongoose.model('Videos');
 
 exports.list_all_videos = function (req, res) {
+    var videoCount;
+    Video.count({}, function(err, count){
+        videoCount = count;
+    });
+
     Video.find({}, function (err, video) {
+        var data ={"videos":video, "resultsCount":videoCount};
         if (err)
             res.send(err);
-        res.json(video);
-    });
+        res.json(data);
+    }).limit(1);
 };
 
 exports.create_a_video = function (req, res) {
