@@ -244,9 +244,9 @@ class MainContainer extends React.PureComponent {
         
         //update state with current requested page
         stateToChange.currRequestPage = currReqPage;
-
+        
         //finally execute ajax request, process the json response from API
-        fetch(buildApiUrl("videos/"+currReqPage+"/"+this.maxItemsPerPage)
+        fetch(buildApiUrl(["videos",currReqPage,this.maxItemsPerPage,requestSearchTerm].join("/"))
         ).then(function (response) {
             return response.json();
         }).then(function (response) {
@@ -287,9 +287,9 @@ class MainContainer extends React.PureComponent {
      * @param {string} contentId - An identifier for a single item.
      */
     requestItem(contentId) {
-
+        
         //finally execute ajax request, process the json response from API
-        fetch(buildApiUrl("video/"+contentId)).then(function (response) {
+        fetch(buildApiUrl(["video",contentId].join("/"))).then(function (response) {
             return response.json();
         }).then(function (response) {
 

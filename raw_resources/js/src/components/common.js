@@ -197,7 +197,7 @@ class Glyphicon extends React.PureComponent {
  * @param {object} props - The component properties from within the react context.
  */
 function ListViewLink(props) {
-    return <a href="?videos">{props.children}</a>;
+    return <a href="/">{props.children}</a>;
 }
 
 /**

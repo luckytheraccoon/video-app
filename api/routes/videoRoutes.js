@@ -9,7 +9,7 @@ module.exports = function(app) {
     .get(videos.list_all_videos)
     .post(videos.create_a_video);
 
-  app.route('/videos/:page?/:limit?')
+  app.route('/videos/:page?/:limit?/:search?')
     .get(videos.list_all_videos);
 
   app.route('/video/:videoId')
