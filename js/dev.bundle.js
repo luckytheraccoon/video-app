@@ -23143,7 +23143,7 @@ var MainContainer = function (_React$PureComponent) {
                 //reset the counter, pageId, page title and set the new search term, reset the current request page
                 itemIndexCounter = 0;
                 stateToChange.currLoadedItems = itemIndexCounter;
-                currReqPage = 1;
+                currReqPage = 0;
             } else {
                 //increment the request page so the user gets a new fresh list of items
                 currReqPage++;
@@ -23152,18 +23152,13 @@ var MainContainer = function (_React$PureComponent) {
             //update state with current requested page
             stateToChange.currRequestPage = currReqPage;
 
-            //call helper function to build the URL to fetch data from server
-            var apiUrl = (0, _common2.buildApiUrl)(requestSearchTerm, currReqPage, this.maxItemsPerPage, null);
-
             //finally execute ajax request, process the json response from API
-            fetch(apiUrl).then(function (response) {
+            fetch((0, _common2.buildApiUrl)("videos/" + currReqPage + "/" + this.maxItemsPerPage)).then(function (response) {
                 return response.json();
             }).then(function (response) {
                 var _this2 = this;
 
                 var pageId = "video-list";
-
-                console.log(response);
 
                 //map each item onto an array of content 
                 response.videos.map(function (item) {
@@ -23200,10 +23195,8 @@ var MainContainer = function (_React$PureComponent) {
         key: "requestItem",
         value: function requestItem(contentId) {
 
-            //call helper function to build the URL to fetch data from server
-            var apiUrl = (0, _common2.buildApiUrl)(null, null, null, contentId);
             //finally execute ajax request, process the json response from API
-            fetch(apiUrl).then(function (response) {
+            fetch((0, _common2.buildApiUrl)("video/" + contentId)).then(function (response) {
                 return response.json();
             }).then(function (response) {
 
@@ -23613,7 +23606,7 @@ exports.default = function (contentArray, pageId, contentId, loadMoreResultsActi
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 /**
  * A helper method that builds a URL based on some parameters
@@ -23623,17 +23616,8 @@ Object.defineProperty(exports, "__esModule", {
  * @param {int} itemLimit - The item limit to return.
  * @param {int} itemId - A specific item ID.
  */
-function buildApiUrl(requestSearchTerm, reqPage, itemLimit, itemId) {
-    var apiUrl = "http://localhost:3000/videos";
-
-    if (itemId) {
-        return apiUrl + "/" + itemId;
-    }
-
-    apiUrl += requestSearchTerm ? "/search?q=" + requestSearchTerm + "&" : "?";
-    var apiPage = "&page=" + reqPage;
-    var apiLimit = "&limit=" + itemLimit;
-    return apiUrl + apiPage + apiLimit;
+function buildApiUrl(query) {
+  return "http://localhost:3000/" + query;
 }
 /**
  * In order to implement a very basic URL router, this method helps with retrieving URL data.
@@ -23641,13 +23625,13 @@ function buildApiUrl(requestSearchTerm, reqPage, itemLimit, itemId) {
  * @param {string} paramName - Parameter name to get from the URL.
  */
 function getUrlParameter(paramName) {
-    var url = window.location.href;
-    paramName = paramName.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + paramName + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  var url = window.location.href;
+  paramName = paramName.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + paramName + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 exports.getUrlParameter = getUrlParameter;

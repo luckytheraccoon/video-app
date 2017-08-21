@@ -236,7 +236,7 @@ class MainContainer extends React.PureComponent {
             //reset the counter, pageId, page title and set the new search term, reset the current request page
             itemIndexCounter=0;
             stateToChange.currLoadedItems = itemIndexCounter;
-            currReqPage=1;
+            currReqPage=0;
         } else {
             //increment the request page so the user gets a new fresh list of items
             currReqPage++;
@@ -245,17 +245,13 @@ class MainContainer extends React.PureComponent {
         //update state with current requested page
         stateToChange.currRequestPage = currReqPage;
 
-        //call helper function to build the URL to fetch data from server
-        let apiUrl = buildApiUrl(requestSearchTerm, currReqPage, this.maxItemsPerPage, null);
-
         //finally execute ajax request, process the json response from API
-        fetch(apiUrl).then(function (response) {
+        fetch(buildApiUrl("videos/"+currReqPage+"/"+this.maxItemsPerPage)
+        ).then(function (response) {
             return response.json();
         }).then(function (response) {
             
             const pageId = "video-list";
-
-            console.log(response);
 
             //map each item onto an array of content 
             response.videos.map((item) => {
@@ -292,10 +288,8 @@ class MainContainer extends React.PureComponent {
      */
     requestItem(contentId) {
 
-        //call helper function to build the URL to fetch data from server
-        const apiUrl = buildApiUrl(null, null, null, contentId);
         //finally execute ajax request, process the json response from API
-        fetch(apiUrl).then(function (response) {
+        fetch(buildApiUrl("video/"+contentId)).then(function (response) {
             return response.json();
         }).then(function (response) {
 
@@ -352,15 +346,7 @@ class MainContainer extends React.PureComponent {
      * Pretty much on rendering the scene, we decide which elements to show or hide based on specific conditions.
      */
     render() {
-        //get the page to show, can be a list or a detail view
-        //while the content is loading...
-        let scene = <div className="div-loading"> Content is loading ... </div>;
-        //once the content has finished loading:
-        if(this.state.contentLoaded) {
-            scene = this.getSceneToRender();
-        }
-
-        return scene;
+        
     }
 }
 /**

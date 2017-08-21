@@ -6,17 +6,8 @@
  * @param {int} itemLimit - The item limit to return.
  * @param {int} itemId - A specific item ID.
  */
-function buildApiUrl(requestSearchTerm, reqPage, itemLimit, itemId) {
-    let apiUrl = "http://localhost:3000/videos";
-
-    if(itemId) {
-        return apiUrl+"/"+itemId;
-    }
-
-    apiUrl += requestSearchTerm ? "/search?q="+ requestSearchTerm + "&" : "?" ;
-    let apiPage = "&page="+reqPage;
-    let apiLimit = "&limit="+itemLimit;
-    return apiUrl+apiPage+apiLimit;
+function buildApiUrl(query) {
+    return "http://localhost:3000/" + query;
 }
 /**
  * In order to implement a very basic URL router, this method helps with retrieving URL data.
