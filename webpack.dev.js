@@ -12,7 +12,7 @@ module.exports = {
   },
   entry: './raw_resources/js/src/index.js',
   output: {
-    filename: 'dev.bundle.js',
+    filename: './js/dev.bundle.js',
     path: path.resolve(__dirname, 'js')
   }
 }

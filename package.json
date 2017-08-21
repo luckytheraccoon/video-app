@@ -4,20 +4,11 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "nodemon server.js",
-    "start:dev": "npm-run-all --parallel css js:dev",
-    "start:prod": "npm-run-all --parallel css js:prod",
-    "js:dev": "npm-run-all build:dev",
-    "js:prod": "npm-run-all build:prod",
-    "css": "npm-run-all sass concatcss minifycss",
-    "concatjs": "concat -o raw_resources/js/lib/merged-scripts.js raw_resources/js/src/imports.js raw_resources/js/src/index.js raw_resources/js/src/common-components.js raw_resources/js/src/main-render.js",
-    "babel": "babel raw_resources/js/src/index.js --out-file raw_resources/js/src/babelified-index.js",
+    "start:dev": "npm-run-all --parallel build:dev startServer",
+    "start:prod": "npm-run-all --parallel build:prod startServer",
     "build:dev": "webpack-dev-server --hot --env=dev  --progress --profile --colors",
     "build:prod": "webpack --env=prod --optimize-minimize --progress --profile --colors",
-    "sass": "node-sass -o raw_resources/css/src/ raw_resources/css/src/",
-    "concatcss": "cleancss --format beautify -o raw_resources/css/lib/merged-styles.css raw_resources/css/src/*.css",
-    "minifycss": "cleancss -o css/main.css raw_resources/css/lib/merged-styles.css",
-    "onchange:css": "onchange \"raw_resources/css/src/*.scss\" -- npm run css",
+    "startServer": "nodemon server.js",
     "test": "jest"
   },
   "author": "Pedro Lucas Ferreira @ luckytheraccoon@gmail.com",
@@ -71,7 +62,8 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.6.0"
+    "webpack-dev-server": "^2.6.0",
+    "webpack-hot-middleware": "^2.18.2"
   },
   "jest": {
     "automock": false,

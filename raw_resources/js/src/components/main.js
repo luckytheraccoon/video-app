@@ -346,7 +346,15 @@ class MainContainer extends React.PureComponent {
      * Pretty much on rendering the scene, we decide which elements to show or hide based on specific conditions.
      */
     render() {
-        
+        //get the page to show, can be a list or a detail view
+        //while the content is loading...
+        let scene = <div className="div-loading"> Content is loading ... </div>;
+        //once the content has finished loading:
+        if(this.state.contentLoaded) {
+            scene = this.getSceneToRender();
+        }
+
+        return scene;
     }
 }
 /**
