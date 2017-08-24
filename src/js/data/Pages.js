@@ -26,6 +26,4 @@ export default (contentArray, pageId, contentId, loadMoreResultsAction, setTitle
         }
     };
     return pages[pageId];
-};
-
-
+}

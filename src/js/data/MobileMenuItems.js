@@ -1,7 +1,7 @@
 import React from "react";
 
-import ListViewLink from "components/ListViewLink";  
-import Glyphicon from "components/Glyphicon"; 
+import ListViewLink from "components/ListViewLink";
+import Glyphicon from "components/Glyphicon";
 /**
  * This allows for any kind of mobile navigation. Assuming you have 3 columns to work with in a grid.
  * The left, center and right cells are expected to be within a css grid system that spans exactly 3 columns.
@@ -19,36 +19,33 @@ import Glyphicon from "components/Glyphicon";
 export default (page, toggleElement, mobilePageTitle, hideSearch) => {
 
     let searchIcon = hideSearch ? null : <Glyphicon key="search" iconSuffix="search" target="mobileSearch" pageTitle={mobilePageTitle} clickAction={toggleElement} />;
-    
-    switch(page) {
+
+    switch (page) {
         case "video-detail":
             return [
-                    <div key="0" className="div-mobile-top-menu-left">
-                        <ListViewLink>
-                            <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
-                        </ListViewLink>
-                        <Glyphicon key="list-alt" iconSuffix="list-alt" target="mobileMenu" pageTitle="Menu" clickAction={toggleElement} />
-                    </div>,
-                    <div key="1" className="div-mobile-top-menu-center">
-                        {mobilePageTitle}
-                    </div>,
-                    <div key="2" className="div-mobile-top-menu-right">
-                        {searchIcon}
-                    </div>
+                <div key="0" className="div-mobile-top-menu-left">
+                    <ListViewLink>
+                        <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
+                    </ListViewLink>
+                    <Glyphicon key="list-alt" iconSuffix="list-alt" target="mobileMenu" pageTitle="Menu" clickAction={toggleElement} />
+                </div>,
+                <div key="1" className="div-mobile-top-menu-center">
+                    {mobilePageTitle}
+                </div>,
+                <div key="2" className="div-mobile-top-menu-right">
+                    {searchIcon}
+                </div>
             ];
     }
     return [
-            <div key="0" className="div-mobile-top-menu-left">
-                <Glyphicon key="list-alt" iconSuffix="list-alt" target="mobileMenu" pageTitle="Menu" clickAction={toggleElement} />
-            </div>,
-            <div key="1" className="div-mobile-top-menu-center">
-                {mobilePageTitle}
-            </div>,
-            <div key="2" className="div-mobile-top-menu-right">
-                {searchIcon}
-            </div>
+        <div key="0" className="div-mobile-top-menu-left">
+            <Glyphicon key="list-alt" iconSuffix="list-alt" target="mobileMenu" pageTitle="Menu" clickAction={toggleElement} />
+        </div>,
+        <div key="1" className="div-mobile-top-menu-center">
+            {mobilePageTitle}
+        </div>,
+        <div key="2" className="div-mobile-top-menu-right">
+            {searchIcon}
+        </div>
     ];
-};
-
-
-           
+}

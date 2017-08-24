@@ -3,6 +3,7 @@ import React from "react";
 import Glyphicon from "components/Glyphicon";
 import ListViewLink from "components/ListViewLink";
 import VideoIframe from "components/VideoIframe";
+import { getUrlParameter, buildApiUrl } from "helpers/common";
 /**
  * Video detail page.
  * 
@@ -12,12 +13,23 @@ export default class extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.contentData;
+        this.state = {
+            videoUrl: null,
+            title: null,
+            description: null
+        }
     }
 
-    componentWillMount() {
-        this.contentData = this.props.contentArray[this.props.contentId];
-        this.props.setTitleAction(this.contentData.title);
+    componentDidMount() {
+        fetch(buildApiUrl(["video", getUrlParameter('video')].join("/"))).then(function (response) {
+            return response.json();
+        }).then(function (response) {
+            this.setState({
+                videoUrl: response.videoUrl,
+                title: response.title,
+                description: response.description
+            });
+        }.bind(this));
     }
 
     render() {
@@ -27,18 +39,18 @@ export default class extends React.PureComponent {
                     <div className="go-back-button">
                         <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
                         Back to Video List
-                        </div>
+                    </div>
                 </ListViewLink>
                 <div>
                     <div>
                         <div className="div-iframe-container">
-                            <VideoIframe videoUrl={this.contentData.videoUrl} />
+                            <VideoIframe videoUrl={this.state.videoUrl} />
                         </div>
                         <div className="title">
-                            {this.contentData.title}
+                            {this.state.title}
                         </div>
                         <div className="description">
-                            {this.contentData.description}
+                            {this.state.description}
                         </div>
                     </div>
                 </div>

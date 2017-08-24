@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = {
   module: {
     rules: [
@@ -22,7 +23,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({ filename: './css/main.css', disable: false, allChunks: true })
+    new ExtractTextPlugin({ filename: './css/main.css', disable: false, allChunks: true }),
+    new WebpackNotifierPlugin({alwaysNotify: true})
   ],
   entry: './src/js/index.js',
   output: {

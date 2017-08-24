@@ -18,7 +18,7 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/VideoApp', { useMongoClient: true });
+mongoose.connect('mongodb://127.0.0.1/VideoApp', { useMongoClient: true });
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

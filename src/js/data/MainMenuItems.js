@@ -7,4 +7,4 @@ export default () => {
         {id:"1", label: "Menu 2"},
         {id:"2", label: "Menu 3"}
     ];
-};
+}

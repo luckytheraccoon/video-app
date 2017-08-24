@@ -1,4 +1,8 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import { optimizedResize } from "helpers/common";
+
+
 /**
  * A component to render an iframe with an external video url.
  */
@@ -6,45 +10,41 @@ export default class extends React.PureComponent {
 
     constructor(props) {
         super(props);
-
-        //multiple details related to the iframe HTML element are defined here
-        this.compId = "video-iframe";
-        this.compClass = this.compId;
-        this.serverProtocol = "https:";
-        this.startingWidth = 0;
-        this.startingHeight = 0;
-        this.frameBorder = 0;
-    }
-
-    /**
-     * This feeds the resize window method a iframe id to resize based on window size.
-     */
-    componentWillMount() {
-        iframeComponentId = this.compId;
     }
 
     /**
      * This is so the resize method doesnt error out when an iframe isnt present.
      */
     componentWillUnmount() {
-        iframeComponentId = null;
+        optimizedResize.remove();
+    }
+
+    resize(params) {
+        params.videoIframe.width = params.videoIframeParent.offsetWidth;
+        params.videoIframe.height = Math.floor(params.videoIframeParent.offsetWidth / 1.77);
+        params.videoIframe.parentElement.style.height = params.videoIframe.height + "px";
     }
 
     /**
      * Call the resize method as soon as an iframe is created, this way it shows up correctly sized immediatly.
      */
     componentDidMount() {
-        window.onresize();
+        const resizeCallBackObj = {
+            "method": this.resize,
+            "params": {
+                "videoIframe": ReactDOM.findDOMNode(this),
+                "videoIframeParent": ReactDOM.findDOMNode(this).parentNode
+            }
+        };
+        optimizedResize.add(resizeCallBackObj);
+        this.resize(resizeCallBackObj.params);
     }
 
     render() {
         return <iframe
-            id={this.compId}
-            className={this.compClass}
-            src={this.serverProtocol + this.props.videoUrl}
-            width={this.startingWidth}
-            height={this.startingHeight}
-            frameBorder={this.frameBorder}>
+            className="video-iframe"
+            src={"https:" + this.props.videoUrl}
+            frameBorder="0">
         </iframe>;
     }
 }

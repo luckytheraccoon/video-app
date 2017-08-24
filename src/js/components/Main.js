@@ -3,18 +3,6 @@ import React from "react";
 //helper methods that execute general tasks
 import { getUrlParameter, buildApiUrl } from "helpers/common";
 
-/** 
-* On window resize, adjust the iframes width and height
-*/
-var iframeComponentId;
-window.onresize = function() {
-    if(typeof iframeComponentId != "undefined") {
-        let videoIframe = document.getElementById(iframeComponentId);
-        videoIframe.width = videoIframe.parentElement.parentElement.offsetWidth;
-        videoIframe.height = Math.floor(videoIframe.width / 1.77);
-        videoIframe.parentElement.style.height = videoIframe.height + "px";
-    }
-}
 
 //custom modules:
 //this is where we keep some commonly used components, i like to keep them separate from the larger components for easier access and readability
@@ -102,6 +90,11 @@ export default class extends React.PureComponent {
      * Method to set the window title before anything else.
      */
     componentWillMount() {
+        if (this.getRequestVideo) {
+            this.setState({
+                pageId:"video-detail"
+            });
+        }
         this.setDocumentTitle(this.DocumentTitle);
     }
 
@@ -109,7 +102,7 @@ export default class extends React.PureComponent {
      * Initial request once this main component has done mounting for the first time.
      */
     componentDidMount() {
-        this.pageRequestBuilder(false);
+        //this.pageRequestBuilder(false);
     }
 
     /**
@@ -121,18 +114,16 @@ export default class extends React.PureComponent {
     pageRequestBuilder(newPageRequest) {
         if (this.getRequestVideo) {
             if (newPageRequest === true) {
-                this.requestList(this.state.currSearchTerm, true, false);
+                this.requestList(this.state.currSearchTerm, true);
             } else {
-                this.requestList(null, false, false);
+                this.requestList(null, false);
             }
-
-            this.requestItem(this.getRequestVideo);
 
         } else {
             if (newPageRequest) {
-                this.requestList(this.state.currSearchTerm, true, true);
+                this.requestList(this.state.currSearchTerm, true);
             } else {
-                this.requestList(null, false, true);
+                this.requestList(null, false);
             }
         }
     }
@@ -183,7 +174,7 @@ export default class extends React.PureComponent {
      * Previously this was in the component's render method but that was not very pretty. 
      */
     getSceneToRender() {
-
+        //
         //a bit of mumbo jumbo going on here:
         //toggle visibility of elements based on the state of said elements
         let mobileMenuVisibleClass = this.state.mobileMenu ? this.visibleClass : this.hiddenClass;
@@ -198,7 +189,7 @@ export default class extends React.PureComponent {
 
         //only fetch the side video list when user is in the video-detail page
         if (this.state.pageId === "video-detail") {
-            sideListComponent = <SideVideoList contentId={this.state.contentId} loadMoreAction={this.moreResultsAction} contentArray={this.contentArray} />;
+            sideListComponent = <SideVideoList loadMoreAction={this.moreResultsAction} />;
         }
 
         mobileIcons = MobileMenuItems(this.state.pageId, this.toggleElement, this.state.pageTitle, this.state.mobileMenu);
@@ -223,9 +214,8 @@ export default class extends React.PureComponent {
      * 
      * @param {string} requestSearchTerm - A string to send to the server as a search parameter.
      * @param {bool} requestNextReqPage - If true, does not reset counters and does not redirect the user, simple gets next page. If false, always goes back to first page.
-     * @param {bool} setPageWhenDone - If true, when this list is done fetching from the server, react can render the page. If false, don't render a page.
      */
-    requestList(requestSearchTerm, requestNextReqPage, setPageWhenDone) {
+    requestList(requestSearchTerm, requestNextReqPage) {
 
         //if the search term changed, then we should start at page one
         //otherwise, just increment the page number and stack more items onto the contentArray
@@ -279,12 +269,12 @@ export default class extends React.PureComponent {
 
             //more state updates after processing the list of content
             //notify app that content has loaded and set a page only if we pass true on render page when done
-            if (setPageWhenDone === true) {
-                this.setPage(pageId);
-                stateToChange.contentLoaded = true;
-                stateToChange.pageId = pageId;
-                stateToChange.pageTitle = this.centerPage.title;
-            }
+
+            this.setPage(pageId);
+            stateToChange.contentLoaded = true;
+            stateToChange.pageId = pageId;
+            stateToChange.pageTitle = this.centerPage.title;
+
 
             stateToChange.currLoadedItems = itemIndexCounter;
             stateToChange.maxContentItems = response.total;
@@ -361,12 +351,8 @@ export default class extends React.PureComponent {
     render() {
         //get the page to show, can be a list or a detail view
         //while the content is loading...
-        let scene = <div className="div-loading"> Content is loading ... </div>;
-        //once the content has finished loading:
-        if (this.state.contentLoaded) {
-            scene = this.getSceneToRender();
-        }
 
-        return scene;
+        this.setPage(this.state.pageId);
+        return this.getSceneToRender();
     }
 }
