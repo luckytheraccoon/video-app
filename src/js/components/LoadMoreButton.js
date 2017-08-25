@@ -26,8 +26,13 @@ export default class LoadMoreButton extends React.PureComponent {
         let label = "Load More Videos";
         let className = "more-results-button";
 
-        if (this.props.clickAction === null) {
+        if (this.props.allLoaded === true) {
             label = "All Videos Loaded";
+            className = "more-results-button-no-click";
+        }
+
+        if (this.props.loading === true) {
+            label = "Loading...";
             className = "more-results-button-no-click";
         }
 

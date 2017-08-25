@@ -21,7 +21,10 @@ export default class extends React.PureComponent {
     }
 
     componentDidMount() {
-        fetch(buildApiUrl(["video", getUrlParameter('video')].join("/"))).then(function (response) {
+
+console.log(this.props);
+
+        fetch(buildApiUrl(["video", this.props.match.params.id].join("/"))).then(function (response) {
             return response.json();
         }).then(function (response) {
             this.setState({
