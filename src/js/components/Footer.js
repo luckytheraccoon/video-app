@@ -8,7 +8,7 @@ export default () => {
         <div className="div-footer">
             <div>Footer 1</div>
             <div>Footer 2</div>
-            <div>Footer 331</div>
+            <div>Footer 3</div>
             <div></div>
         </div>
     );

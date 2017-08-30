@@ -14,17 +14,20 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/i,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'sass-loader']
-        })
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin({ filename: './css/main.css', disable: false, allChunks: true }),
-    new WebpackNotifierPlugin({alwaysNotify: true})
+    // new ExtractTextPlugin({ filename: './css/main.css', disable: false, allChunks: true }),
+    new WebpackNotifierPlugin({ alwaysNotify: true })
   ],
   entry: './src/js/index.js',
   output: {
