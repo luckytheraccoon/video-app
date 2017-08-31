@@ -8,26 +8,26 @@ import {
 } from 'react-router-dom';
 
 //helper methods that execute general tasks
-import { getUrlParameter, buildApiUrl } from "helpers/common";
+import { buildApiUrl } from "../helpers/common";
 
 //custom modules:
 //this is where we keep some commonly used components, i like to keep them separate from the larger components for easier access and readability
-import Footer from "components/Footer";
-import UserBlock from "components/UserBlock";
-import MainMenu from "components/MainMenu";
-import Searchform from "components/Searchform";
-import Glyphicon from "components/Glyphicon";
-import LoadMoreButton from "components/LoadMoreButton";
-import VideoDetail from "components/pages/VideoDetail";
-import VideoList from "components/pages/VideoList";
-import SideVideoList from "components/SideVideoList";
+import Footer from "./Footer";
+import UserBlock from "./UserBlock";
+import MainMenu from "./MainMenu";
+import Searchform from "./Searchform";
+import Glyphicon from "./Glyphicon";
+import LoadMoreButton from "./LoadMoreButton";
+import VideoDetail from "./pages/VideoDetail";
+import VideoList from "./pages/VideoList";
+import SideVideoList from "./SideVideoList";
 
 //this is where we keep the mobile controls, each page can have different controls
-import MobileMenuItems from "data/MobileMenuItems";
+import MobileMenuItems from "../data/MobileMenuItems";
 
 //this is where we keep the pages, each page can have its own output or it can depend on a content object
 //the content objects can be obtained from within the mainPages module which imports the mainContent module
-import Pages from "data/Pages";
+import Pages from "../data/Pages";
 
 const routes = [
     { path: '/',
@@ -57,7 +57,7 @@ export default class extends React.PureComponent {
         this.addToDocumentTitle = this.addToDocumentTitle.bind(this);
 
         //if a get request exists with the variable "video" in it, capture the value
-        this.getRequestVideo = getUrlParameter('video');
+        //this.getRequestVideo = getUrlParameter('video');
 
         //the content array is where our current content is sitting, waiting to get rendered somehow
         this.contentArray = {};
@@ -113,7 +113,7 @@ export default class extends React.PureComponent {
      * @param {string} title - What to set the window title to
      */
     setDocumentTitle(title) {
-        document.title = title;
+        //document.title = title;
     }
 
 

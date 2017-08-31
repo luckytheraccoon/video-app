@@ -1,9 +1,9 @@
 import React from "react";
 
 //this is where we keep the main menu controls, each page can have different controls
-import MainMenuItems from "data/MainMenuItems"; 
+import MainMenuItems from "../data/MainMenuItems"; 
 
-import UserBlock from "components/UserBlock"; 
+import UserBlock from "./UserBlock"; 
 
 /**
  * This renders the left menu.

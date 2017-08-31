@@ -1,10 +1,10 @@
 import React from "react";
 
-import Glyphicon from "components/Glyphicon";
-import ListViewLink from "components/ListViewLink";
-import VideoIframe from "components/VideoIframe";
-import SideVideoList from "components/SideVideoList";
-import { getUrlParameter, buildApiUrl } from "helpers/common";
+import Glyphicon from "../Glyphicon";
+import ListViewLink from "../ListViewLink";
+import VideoIframe from "../VideoIframe";
+import SideVideoList from "../SideVideoList";
+import { buildApiUrl } from "../../helpers/common";
 /**
  * Video detail page.
  * 

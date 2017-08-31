@@ -1,6 +1,6 @@
 import React from "react";
-import VideoDetail from "components/pages/VideoDetail";
-import VideoList from "components/pages/VideoList";
+import VideoDetail from "../components/pages/VideoDetail";
+import VideoList from "../components/pages/VideoList";
 //the mainContent module is responsible for loading up specific a content item, or a list of content items
 
 /**

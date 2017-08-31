@@ -1,18 +1,20 @@
 'use strict';
 module.exports = function(app) {
   var videos = require('../controllers/videoController');
-
+/*
   app.route('/')
-  .get(videos.main_route);
+  .get(function(req, res) {
+    res.sendFile('../index.html');
+  }); */
 
-  app.route('/videos')
+  app.route('/api/videos')
     .get(videos.list_all_videos)
     .post(videos.create_a_video);
 
-  app.route('/videos/:page?/:limit?/:search?')
+  app.route('/api/videos/:page?/:limit?/:search?')
     .get(videos.list_all_videos);
 
-  app.route('/video/:videoId')
+  app.route('/api/video/:videoId')
     .get(videos.read_a_video)
     .put(videos.update_a_video)
     .delete(videos.delete_a_video);

@@ -1,7 +1,7 @@
 import React from "react";
 
-import ListViewLink from "components/ListViewLink";
-import Glyphicon from "components/Glyphicon";
+import ListViewLink from "../components/ListViewLink";
+import Glyphicon from "../components/Glyphicon";
 /**
  * This allows for any kind of mobile navigation. Assuming you have 3 columns to work with in a grid.
  * The left, center and right cells are expected to be within a css grid system that spans exactly 3 columns.

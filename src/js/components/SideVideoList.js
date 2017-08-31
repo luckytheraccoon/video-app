@@ -1,7 +1,7 @@
 import React from "react";
-import ContentItemList from "components/ContentItemList";
-import LoadMoreButton from "components/LoadMoreButton";
-import { getUrlParameter, buildApiUrl } from "helpers/common";
+import ContentItemList from "./ContentItemList";
+import LoadMoreButton from "./LoadMoreButton";
+import { buildApiUrl } from "../helpers/common";
 
 /**
  * Side Video list block, not an actual page, just a block that is embedded within other pages.
@@ -39,7 +39,7 @@ export default class extends React.PureComponent {
             const loadedVideos = this.state.loadedVideos;
 
             response.videos.map((video) => {
-                if (video._id !== getUrlParameter('video')) {
+             
                     loadedVideos.push(
                         <ContentItemList
                             pageId="side-video-list"
@@ -47,7 +47,7 @@ export default class extends React.PureComponent {
                             contentData={video}
                         />
                     );
-                }
+              
             });
 
             this.setState({

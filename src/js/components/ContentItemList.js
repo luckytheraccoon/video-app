@@ -1,5 +1,5 @@
 import React from "react";
-import DetailViewLink from "components/DetailViewLink"; 
+import DetailViewLink from "./DetailViewLink"; 
 
 /**
  * This renders a content item's details when being listed. 

@@ -9,22 +9,22 @@ module.exports = {
      * @param {int} itemId - A specific item ID.
      */
     buildApiUrl: function (query) {
-        return "http://127.0.0.1:3000/" + query;
+        return "http://localhost:8080/" + query;
     },
     /**
      * In order to implement a very basic URL router, this method helps with retrieving URL data.
      * 
      * @param {string} paramName - Parameter name to get from the URL.
      */
-    getUrlParameter: function (paramName) {
+   /* getUrlParameter: function (paramName) {
         let url = window.location.href;
         paramName = paramName.replace(/[\[\]]/g, "\\$&");
         var regex = new RegExp("[?&]" + paramName + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
         if (!results) return null;
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
-    },
-    optimizedResize: (function () {
+    },*/
+    /*optimizedResize: (function () {
         
             var callbacks = [],
                 running = false;
@@ -78,5 +78,5 @@ module.exports = {
                     window.removeEventListener('resize', resize);
                 }
             }
-        }())
+        }())*/
 }

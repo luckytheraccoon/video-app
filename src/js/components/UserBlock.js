@@ -1,6 +1,6 @@
 import React from "react";
 
-import Glyphicon from "components/Glyphicon"; 
+import Glyphicon from "./Glyphicon"; 
 /**
  * Simple component that renders the user block.
  */

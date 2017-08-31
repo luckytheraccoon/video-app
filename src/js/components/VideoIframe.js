@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { optimizedResize } from "helpers/common";
 
 /**
  * A component to render an iframe with an external video url.
@@ -15,7 +14,6 @@ export default class extends React.PureComponent {
      * This is so the resize method doesnt error out when an iframe isnt present.
      */
     componentWillUnmount() {
-        optimizedResize.remove("iframe-resize");
     }
 
     resize(params) {
@@ -28,7 +26,7 @@ export default class extends React.PureComponent {
      * Call the resize method as soon as an iframe is created, this way it shows up correctly sized immediatly.
      */
     componentDidMount() {
-        const resizeCallBackObj = {
+      /*  const resizeCallBackObj = {
             "id":"iframe-resize",
             "method": this.resize,
             "params": {
@@ -37,7 +35,7 @@ export default class extends React.PureComponent {
             }
         };
         optimizedResize.add(resizeCallBackObj);
-        this.resize(resizeCallBackObj.params);
+        this.resize(resizeCallBackObj.params);*/
     }
 
     render() {
