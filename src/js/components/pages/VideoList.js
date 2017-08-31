@@ -1,5 +1,4 @@
 import React from "react";
-
 import ContentItemList from "components/ContentItemList";
 import LoadMoreButton from "components/LoadMoreButton";
 import { buildApiUrl } from "helpers/common";

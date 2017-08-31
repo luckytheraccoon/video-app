@@ -3,7 +3,8 @@ import React from "react";
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    Link,
+    withRouter
 } from 'react-router-dom';
 
 //helper methods that execute general tasks
@@ -27,6 +28,17 @@ import MobileMenuItems from "data/MobileMenuItems";
 //this is where we keep the pages, each page can have its own output or it can depend on a content object
 //the content objects can be obtained from within the mainPages module which imports the mainContent module
 import Pages from "data/Pages";
+
+const routes = [
+    { path: '/',
+      exact: true,
+      main: () => <VideoList />
+    },
+    { path: '/video/:id',
+      main: () => <VideoDetail />,
+      sidebar: () => <SideVideoList />
+    }
+  ]
 
 /**
  * The main container is the main wrapper component that's responsible for 
@@ -129,7 +141,7 @@ export default class extends React.PureComponent {
         }
 
         mobileIcons = MobileMenuItems(this.state.pageId, this.toggleElement, this.state.pageTitle, this.state.mobileMenu);
-
+    
         return (<Router>
             <div className="div-main">
                 {mobileIcons}
@@ -137,10 +149,8 @@ export default class extends React.PureComponent {
                 <div className={"div-maincontent-wrapper " + pageVisibleClass}>
                     <Searchform currRequestPage={this.state.currRequestPage} onSubmit={this.requestList} className={mobileSearchVisibleClass} />
                     
-
                     <Route path="/" exact component={VideoList}/>
                     <Route path="/video/:id" component={VideoDetail}/>
-                    <Route path="/video/:id" component={SideVideoList}/>
                     
                 </div>
                 <Footer />
@@ -148,6 +158,26 @@ export default class extends React.PureComponent {
             </Router>
         );
     }
+
+    /*
+    {routes.map((route, index) => (
+                        <Route
+                          key={index}
+                          path={route.path}
+                          exact={route.exact}
+                          component={route.main}
+                        />
+                    ))}
+                    {routes.map((route, index) => (
+                        <Route
+                          key={index}
+                          path={route.path}
+                          exact={route.exact}
+                          component={route.sidebar}
+                        />
+                    ))}
+                    <Route path="/video/:id" component={SideVideoList}/>
+    */
 
     /**
      * Set the page to an object that can be rendered later.

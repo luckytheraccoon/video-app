@@ -1,5 +1,4 @@
 import React from "react";
-
 import DetailViewLink from "components/DetailViewLink"; 
 
 /**

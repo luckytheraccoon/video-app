@@ -56,11 +56,13 @@ module.exports = {
         
             // adds callback to loop
             function addCallback(callback) {
-        
                 if (callback) {
                     callbacks.push(callback);
                 }
-        
+            }
+
+            function removeCallBack(callback) {
+                callbacks = [];
             }
         
             return {
@@ -72,6 +74,7 @@ module.exports = {
                     addCallback(callback);
                 },
                 remove: () => {
+                    removeCallBack();
                     window.removeEventListener('resize', resize);
                 }
             }

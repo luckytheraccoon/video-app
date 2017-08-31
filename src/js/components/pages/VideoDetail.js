@@ -3,6 +3,7 @@ import React from "react";
 import Glyphicon from "components/Glyphicon";
 import ListViewLink from "components/ListViewLink";
 import VideoIframe from "components/VideoIframe";
+import SideVideoList from "components/SideVideoList";
 import { getUrlParameter, buildApiUrl } from "helpers/common";
 /**
  * Video detail page.
@@ -21,9 +22,6 @@ export default class extends React.PureComponent {
     }
 
     componentDidMount() {
-
-console.log(this.props);
-
         fetch(buildApiUrl(["video", this.props.match.params.id].join("/"))).then(function (response) {
             return response.json();
         }).then(function (response) {
@@ -38,25 +36,28 @@ console.log(this.props);
     render() {
         return (
             <div className="div-content-detail">
-                <ListViewLink>
-                    <div className="go-back-button">
-                        <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
-                        Back to Video List
-                    </div>
-                </ListViewLink>
-                <div>
+                <div className="div-content-video">
+                    <ListViewLink>
+                        <div className="go-back-button">
+                            <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
+                            Back to Video List
+                        </div>
+                    </ListViewLink>
                     <div>
-                        <div className="div-iframe-container">
-                            <VideoIframe videoUrl={this.state.videoUrl} />
-                        </div>
-                        <div className="title">
-                            {this.state.title}
-                        </div>
-                        <div className="description">
-                            {this.state.description}
+                        <div>
+                            <div className="div-iframe-container">
+                                <VideoIframe videoUrl={this.state.videoUrl} />
+                            </div>
+                            <div className="title">
+                                {this.state.title}
+                            </div>
+                            <div className="description">
+                                {this.state.description}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <SideVideoList />
             </div>
         );
     }

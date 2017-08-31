@@ -91,6 +91,11 @@ a {
 	margin: 10px;
 	grid-area: maincontent;
 }
+.div-content-detail {
+	width:100%;
+	display: flex;
+	flex-flow: row wrap;
+}
 
 .div-search-form {
 	margin-bottom: 10px;
@@ -158,7 +163,7 @@ a {
 }
 
 .div-side-content-list,
-.div-content-detail,
+.div-content-video,
 .div-content-list {
 	position:relative;
 	&>div>div {
@@ -181,7 +186,7 @@ a {
 	flex: 1 20%;
 }
 
-.div-content-detail {
+.div-content-video {
 	&>div>div>div.title {
 		margin-top:10px;
 		font-size:1.2em;
@@ -282,7 +287,7 @@ a>.glyphicon {
 		}
 	}
 	.div-content-list, 
-	.div-content-detail {
+	.div-content-video {
 		flex: 1 100%;
 
 		&.elementHidden {
@@ -294,7 +299,7 @@ a>.glyphicon {
 			margin-right:10px;
 		}
 	}
-	.div-content-detail {
+	.div-content-video {
 		&>div>div {
 			flex: 1 100%;
 		}
@@ -341,14 +346,14 @@ a>.glyphicon {
 		display:flex;
 		flex-flow: row wrap;
 	}
-	.div-content-detail,
+	.div-content-video,
 	.div-content-list {
     	flex: 1 80%;
 		&.elementHidden {
 			display: flex;
 		}
 	}
-	.div-content-detail {
+	.div-content-video {
 		&>div>div {
 			flex: 1 100%;
 		}
@@ -411,7 +416,7 @@ a>.glyphicon {
 		}
 	}
 	
-	.div-content-detail,
+	.div-content-video,
 	.div-content-list {
     	flex: 1 100%;
 		
@@ -426,7 +431,7 @@ a>.glyphicon {
 	}
 
 	.div-side-content-list,
-	.div-content-detail,
+	.div-content-video,
 	.div-content-list {
 		&>div>.title,
 		&>div>.description {

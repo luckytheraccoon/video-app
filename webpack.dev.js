@@ -16,11 +16,11 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [{
+          loader: "css-loader" // creates style nodes from JS strings
+        },{
+          loader: "sass-loader" // creates style nodes from JS strings
+        },{
           loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader" // compiles Sass to CSS
         }]
       }
     ]

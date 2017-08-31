@@ -36,7 +36,7 @@ module.exports = {
 
   plugins: [
     
-    new ExtractTextPlugin({ filename: 'css/main.css', disable: false, allChunks: true }),
+    new ExtractTextPlugin({ filename: './css/main.css', disable: false, allChunks: true }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
