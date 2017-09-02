@@ -36,7 +36,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new WebpackNotifierPlugin({ alwaysNotify: true })
+        new WebpackNotifierPlugin({ title: 'Client Build',alwaysNotify: true })
     ],
     devtool: 'source-map'
 };

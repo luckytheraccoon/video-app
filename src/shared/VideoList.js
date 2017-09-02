@@ -16,6 +16,7 @@ export default class extends React.PureComponent {
             requestVideos: null,
             nextPage: 0,
             loadedVideosCount: 0,
+            limit: 3,
             loadedVideos: [],
             total: null,
             contentLoading: false
@@ -32,7 +33,7 @@ export default class extends React.PureComponent {
             contentLoading: true
         });
 
-        fetch(buildApiUrl(["videos", this.state.nextPage, 1, null].join("/"))).then(function (response) {
+        fetch(buildApiUrl(["videos", this.state.nextPage, this.state.limit].join("/"))).then(function (response) {
             return response.json();
         }).then(function (response) {
 
@@ -51,7 +52,7 @@ export default class extends React.PureComponent {
             this.setState({
                 requestVideos: response.videos,
                 loadedVideosCount: this.state.loadedVideosCount + response.videos.length,
-                nextPage: this.state.nextPage + 1,
+                nextPage: this.state.nextPage + this.state.limit,
                 loadedVideos: loadedVideos,
                 total: response.total,
                 contentLoading: false

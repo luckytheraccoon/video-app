@@ -16,7 +16,8 @@ exports.list_all_videos = function (req, res) {
         pageDefault = 0,
         limitDefault = 9,
         page = pageDefault,
-        limit = limitDefault;
+        limit = limitDefault,
+        findQuery = {};
 
     if(req.params.page) {
         page = parseInt(req.params.page);
@@ -28,11 +29,19 @@ exports.list_all_videos = function (req, res) {
         limit = limit > 0 && limit <= 100 ? limit : limitDefault;
     }
 
-    Video.count({}, function(err, count){
+    if(req.params.excludeId) {
+        findQuery._id = { $ne: req.params.excludeId };
+    }
+
+    if(req.params.searchTerm) {
+        findQuery.title = new RegExp(req.params.searchTerm, "i");
+    }
+    
+    Video.count(findQuery, function(err, count){
         videoCount = count;
     });
 
-    Video.find({}, function (err, video) {
+    Video.find(findQuery, function (err, video) {
         var data ={"videos":video, "total":videoCount};
         if (err)
             res.send(err);

@@ -40,7 +40,10 @@ app.route('/api/videos')
     .get(controller.list_all_videos)
     .post(controller.create_a_video);
 
-app.route('/api/videos/:page?/:limit?/:search?')
+app.route('/api/videos/:page?/:limit?/:excludeId?')
+    .get(controller.list_all_videos);
+
+app.route('/api/videos/search/:page?/:limit?/:searchTerm?')
     .get(controller.list_all_videos);
 
 app.route('/api/video/:videoId')

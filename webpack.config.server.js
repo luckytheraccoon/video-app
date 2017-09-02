@@ -41,7 +41,7 @@ module.exports = {
     externals: nodeExternals(),
     devtool: 'source-map',
     plugins: [
-        new WebpackNotifierPlugin({ alwaysNotify: true }),
+        new WebpackNotifierPlugin({ title: 'Server Build', alwaysNotify: true }),
         new ExtractTextPlugin('main.css')
     ]
 };
