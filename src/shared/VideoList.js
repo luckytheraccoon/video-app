@@ -1,4 +1,5 @@
 import React from "react";
+import Main from './Main';
 import ContentItemList from "./ContentItemList";
 import LoadMoreButton from "./LoadMoreButton";
 import { buildApiUrl } from "./common";
@@ -81,10 +82,14 @@ export default class extends React.PureComponent {
         }
 
         return (
-            <div className="div-content-list">
-                {this.state.loadedVideos}
-                <LoadMoreButton loading={loading} allLoaded={allLoaded} clickAction={loadMoreAction} />
-            </div>
+            <Main columnClass="div--video-list">
+                <div className="div--video-list-wrapper">
+                    <div className="div--video-wrapper-inner">
+                        {this.state.loadedVideos}
+                    </div>
+                    <LoadMoreButton loading={loading} allLoaded={allLoaded} clickAction={loadMoreAction} />
+                </div>
+            </Main>
         );
     }
 

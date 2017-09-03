@@ -5,7 +5,7 @@ import React from "react";
  */
 export default () => {
     return (
-        <div className="div-footer">
+        <div className="div--footer">
             <div>Footer 1</div>
             <div>Footer 2</div>
             <div>Footer 3</div>

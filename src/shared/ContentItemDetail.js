@@ -10,7 +10,7 @@ export default (props) => {
 
     return (
         <div>
-            <div className="div-iframe-container">
+            <div>
                 <VideoIframe videoUrl={content.videoUrl} />
             </div>
             <div className="title">

@@ -1,0 +1,30 @@
+@media (max-width:767px) {
+
+	body {
+		background:red !important;
+	}
+
+	.div--video-list,
+	.div--video-detail {
+		@include div-main-grid-two-col();
+	}
+
+	.div--video-detail,
+	.div--video-list {
+		&>.div--video-list-wrapper {
+			&>.div--video-wrapper-inner {
+				&>.div--video-inner-item {
+					width: 50%;
+				}
+			}
+		}
+	}
+
+	.div--main-menu {
+		padding: 10px;
+	}
+
+	.form--search-form {
+		grid-area: searchbar;
+	}
+}

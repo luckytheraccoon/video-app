@@ -1,0 +1,12 @@
+@mixin div-main-grid-single-col() {
+	display: grid;
+	grid-template: {
+		rows: [maincontent] 8fr [morecontent] 1fr [footer] 1fr;
+		areas: 
+		"maincontent maincontent"
+		"morecontent morecontent"
+		"footer footer";
+		columns: [left] 5fr [right] 5fr;
+	}
+	@include full-span();
+}

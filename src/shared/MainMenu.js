@@ -16,12 +16,12 @@ export default (props) => {
         return <button key={item.id}>{item.label}</button>;
     });
     return (
-        <div className={"div-main-menu " + props.className}>
+        <div className={"div--main-menu " + props.className}>
             <UserBlock />
-            <div className="div-main-menu-menu">
+            <div className="div--main-menu-item-wrapper">
                 {menuItems}
             </div>
-            <div className="div-main-menu-logout">
+            <div className="div--main-menu-logout">
                 <button>Logout</button>
             </div>
         </div>

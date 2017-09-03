@@ -44,7 +44,7 @@ export default class extends React.PureComponent {
 
     render() {
         return <iframe
-            className="video-iframe"
+            className="iframe--video"
             src={this.props.videoUrl}
             frameBorder="0">
         </iframe>;

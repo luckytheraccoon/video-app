@@ -1,0 +1,33 @@
+@media (min-width:768px) and (max-width:991px) {
+	body {
+		background:green !important;
+	}
+
+
+	.div--video-list,
+	.div--video-detail {
+		@include div-main-grid-two-col();
+	}
+	
+	.div--video-detail,
+	.div--video-list {
+		&>.div--video-list-wrapper {
+			&>.div--video-wrapper-inner { 
+				&>.div--video-inner-item {
+					width: 33.3%;
+				}
+			}
+		}
+	}
+
+	.div--video-detail {
+		&>.div--video-list-wrapper {
+			align-self: start;
+		}
+	}
+
+	.form--search-form {
+		grid-area: searchbar;
+	}
+
+}

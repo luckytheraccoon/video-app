@@ -1,5 +1,5 @@
 import React from "react";
-
+import Main from './Main';
 import Glyphicon from "./Glyphicon";
 import ListViewLink from "./ListViewLink";
 import VideoIframe from "./VideoIframe";
@@ -37,9 +37,9 @@ export default class extends React.PureComponent {
         this.fetchVideo();
     }
 
-    componentDidUpdate (prevProps) {
-        const oldV = prevProps.match.params.id, 
-              newV = this.props.match.params.id;
+    componentDidUpdate(prevProps) {
+        const oldV = prevProps.match.params.id,
+            newV = this.props.match.params.id;
         if (newV !== oldV) {
             this.fetchVideo();
         }
@@ -47,8 +47,8 @@ export default class extends React.PureComponent {
 
     render() {
         return (
-            <div className="div-content-detail">
-                <div className="div-content-video">
+            <Main columnClass="div--video-detail">
+                <div className="div--video-wrapper">
                     <ListViewLink>
                         <div className="go-back-button">
                             <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
@@ -57,7 +57,7 @@ export default class extends React.PureComponent {
                     </ListViewLink>
                     <div>
                         <div>
-                            <div className="div-iframe-container">
+                            <div>
                                 <VideoIframe videoUrl={this.state.videoUrl} />
                             </div>
                             <div className="title">
@@ -70,7 +70,7 @@ export default class extends React.PureComponent {
                     </div>
                 </div>
                 <SideVideoList currVideo={this.props.match.params.id} />
-            </div>
+            </Main>
         );
     }
 }

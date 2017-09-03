@@ -1,0 +1,39 @@
+/*
+	Smartphones
+*/
+@media (max-width:390px) {
+	body {
+		background:yellow !important;
+	}
+
+	.div--video-list,
+	.div--video-detail {
+		@include div-main-grid-single-col();
+	}
+
+	.div--main-menu,
+	.div--video-wrapper {
+		grid-area: maincontent;
+	}
+
+	.div--main-menu {
+		display:none;
+	}
+
+	.div--video-detail,
+	.div--video-list {
+		&>.div--video-list-wrapper {
+			grid-area: morecontent;
+			&>.div--video-wrapper-inner {
+				&>.div--video-inner-item {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.form--search-form {
+		grid-area: searchbar;
+	}
+
+}

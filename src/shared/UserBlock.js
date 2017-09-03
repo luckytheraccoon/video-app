@@ -6,9 +6,9 @@ import Glyphicon from "./Glyphicon";
  */
 export default () => {
     return(
-        <div className="div-user-block">
-            <div className="div-user-photo"><Glyphicon iconSuffix="user" /></div>
-            <div className="div-user-name">User Name</div>
+        <div className="div--user-block">
+            <div className="div--user-photo"><Glyphicon iconSuffix="user" /></div>
+            <div className="div--user-name">User Name</div>
         </div>
     );
 }

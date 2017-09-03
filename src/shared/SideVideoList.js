@@ -47,7 +47,7 @@ export default class extends React.PureComponent {
 
             response.videos.map((video) => {
                 loadedVideos.push(
-                    <ContentItemList
+                    <ContentItemList 
                         pageId="side-video-list"
                         key={video._id}
                         contentData={video}
@@ -76,7 +76,7 @@ export default class extends React.PureComponent {
         if (newV !== oldV) {
             this.setState(
                 initialState,
-                ()=>{
+                () => {
                     this.fetchVideos()
                 }
             );
@@ -100,8 +100,10 @@ export default class extends React.PureComponent {
         }
 
         return (
-            <div className="div-side-content-list">
-                {this.state.loadedVideos}
+            <div className="div--video-list-wrapper">
+                <div className="div--video-wrapper-inner">
+                    {this.state.loadedVideos}
+                </div>
                 <LoadMoreButton loading={loading} allLoaded={allLoaded} clickAction={loadMoreAction} />
             </div>
         );

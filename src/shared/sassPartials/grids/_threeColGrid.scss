@@ -1,0 +1,11 @@
+@mixin div-main-grid-three-col() {
+	display: grid;
+	grid-template: {
+		rows: [maincontent] 9fr [footer] 1fr;
+		areas: 
+		"maincontent-left maincontent maincontent-right"
+		"footer footer footer";
+		columns: [left] 1fr [center] 7fr [right] 2fr;
+	}
+	@include full-span();
+}

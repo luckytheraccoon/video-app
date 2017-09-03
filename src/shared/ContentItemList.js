@@ -18,18 +18,18 @@ export default function ContentItemList(props) {
 
 
     return (
-        <div>
-            <div className="video-thumbnail">
+        <div className="div--video-inner-item">
+            <div className="div--video-thumbnail">
                 <DetailViewLink contentId={content._id}>
                     <img src={content.thumbnailUrl} />
                 </DetailViewLink>
             </div>
-            <div className="title">
+            <div className="div--video-title">
                 <DetailViewLink contentId={content._id}>
                     {title}
                 </DetailViewLink>
             </div>
-            <div className="description">
+            <div className="div--video-description">
                 {description}
             </div>
         </div>
