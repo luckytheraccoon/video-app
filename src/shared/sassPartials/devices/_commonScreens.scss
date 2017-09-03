@@ -2,6 +2,12 @@
 	body {
 		background:blue !important;
 	}
+	
+	.div--video-list {
+		&>.div--video-list-wrapper {
+			grid-area: maincontent;
+		}
+	}
 
 	.div--video-list {
 		@include div-main-grid-two-col();
@@ -26,7 +32,4 @@
 		}
 	}
 
-	.form--search-form {
-		grid-area: searchbar;
-	}
 }

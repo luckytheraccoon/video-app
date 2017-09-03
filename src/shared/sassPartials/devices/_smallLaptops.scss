@@ -3,6 +3,16 @@
 		background:green !important;
 	}
 
+	.div--video-detail {
+		&>.div--video-list-wrapper {
+			grid-area: morecontent;
+		}
+	}
+	.div--video-list {
+		&>.div--video-list-wrapper {
+			grid-area: maincontent;
+		}
+	}
 
 	.div--video-list,
 	.div--video-detail {
@@ -24,10 +34,6 @@
 		&>.div--video-list-wrapper {
 			align-self: start;
 		}
-	}
-
-	.form--search-form {
-		grid-area: searchbar;
 	}
 
 }

@@ -8,6 +8,16 @@
 	.div--video-detail {
 		@include div-main-grid-two-col();
 	}
+	.div--video-detail {
+		&>.div--video-list-wrapper {
+			grid-area: morecontent;
+		}
+	}
+	.div--video-list {
+		&>.div--video-list-wrapper {
+			grid-area: maincontent;
+		}
+	}
 
 	.div--video-detail,
 	.div--video-list {
@@ -24,7 +34,4 @@
 		padding: 10px;
 	}
 
-	.form--search-form {
-		grid-area: searchbar;
-	}
 }

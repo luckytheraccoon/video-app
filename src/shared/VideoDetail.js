@@ -50,7 +50,7 @@ export default class extends React.PureComponent {
             <Main columnClass="div--video-detail">
                 <div className="div--video-wrapper">
                     <ListViewLink>
-                        <div className="go-back-button">
+                        <div className="div--go-back-button">
                             <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
                             Back to Video List
                         </div>

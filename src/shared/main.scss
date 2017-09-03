@@ -24,7 +24,6 @@ html, body {
 	margin:0 auto;
 	max-width:1000px;
 	min-width:260px;
-	height:100%;
 	&>div {
 		@include full-span();
 	}
@@ -45,7 +44,7 @@ a {
 }
 
 .form--search-form {
-	margin-bottom: 10px;
+	grid-area: searchbar;
     flex: 1 100%;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -107,6 +106,7 @@ a {
 .div--video-list {
 	&>.div--video-list-wrapper {
 		position:relative;
+		grid-area: maincontent-right;
 
 		&>.div--video-wrapper-inner {
 			display: flex;
@@ -156,6 +156,7 @@ a {
 	cursor: pointer;
 }
 
+
 .glyphicon {
 	cursor: pointer;
 }
@@ -163,9 +164,9 @@ a>.glyphicon {
 	color:white;
 }
 
-.more-results-button,
-.go-back-button,
-.more-results-button-no-click {
+.div--more-results-button,
+.div--go-back-button,
+.div--more-results-button-no-click {
 	width: 100%!important;
 	padding: 10px!important;
 	background: #f1f1f1;
@@ -185,7 +186,7 @@ a>.glyphicon {
 
 }
 
-.more-results-button-no-click {
+.div--more-results-button-no-click {
 	&:hover {
 		background: #f1f1f1;
 		border:1px solid #f1f1f1;

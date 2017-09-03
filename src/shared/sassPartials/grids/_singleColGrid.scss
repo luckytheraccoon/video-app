@@ -1,8 +1,9 @@
 @mixin div-main-grid-single-col() {
 	display: grid;
 	grid-template: {
-		rows: [maincontent] 8fr [morecontent] 1fr [footer] 1fr;
+		rows: [searchbar] 0fr [maincontent] 8fr [morecontent] 1fr [footer] 1fr;
 		areas: 
+		"searchbar searchbar"
 		"maincontent maincontent"
 		"morecontent morecontent"
 		"footer footer";

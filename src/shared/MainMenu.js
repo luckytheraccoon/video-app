@@ -1,9 +1,11 @@
 import React from "react";
-
-//this is where we keep the main menu controls, each page can have different controls
 import MainMenuItems from "./MainMenuItems"; 
-
 import UserBlock from "./UserBlock"; 
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
 
 /**
  * This renders the left menu.
@@ -13,13 +15,13 @@ import UserBlock from "./UserBlock";
 export default (props) => {
     //gets the menu buttons from an "external" source
     const menuItems = MainMenuItems().map((item) => {
-        return <button key={item.id}>{item.label}</button>;
+        return <li><Link to={item.route}><button key={item.id}>{item.label}</button></Link></li>;
     });
     return (
         <div className={"div--main-menu " + props.className}>
             <UserBlock />
             <div className="div--main-menu-item-wrapper">
-                {menuItems}
+                <ul>{menuItems}</ul>
             </div>
             <div className="div--main-menu-logout">
                 <button>Logout</button>
