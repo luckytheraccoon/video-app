@@ -21,7 +21,7 @@ export default class extends React.PureComponent {
         }
     }
 
-    componentDidMount() {
+    fetchVideo() {
         fetch(buildApiUrl(["video", this.props.match.params.id].join("/"))).then(function (response) {
             return response.json();
         }).then(function (response) {
@@ -31,6 +31,17 @@ export default class extends React.PureComponent {
                 description: response.description
             });
         }.bind(this));
+    }
+
+    componentDidMount() {
+        this.fetchVideo();
+    }
+
+    componentDidUpdate (prevProps) {
+        const oldV = prevProps.match.params.id, 
+              newV = this.props.match.params.id;
+        if (newV !== oldV)
+        this.fetchVideo();
     }
 
     render() {

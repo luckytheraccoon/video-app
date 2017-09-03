@@ -11,24 +11,15 @@ import DetailViewLink from "./DetailViewLink";
 export default function ContentItemList(props) {
 
     let content = props.contentData;
-    let thumbnailClass;
 
     //its possible to limit the amount of characters on a title or description this way
     let title = content.title.substring(0, 35) + "...";
     let description = content.description.substring(0, 55) + "...";
 
-    switch (props.pageId) {
-        case "video-list":
-            thumbnailClass = "thumbnail-large";
-            break;
-        case "side-video-list":
-            thumbnailClass = "thumbnail-medium";
-            break;
-    }
 
     return (
-        <div id={"content_" + content.index}>
-            <div className={thumbnailClass}>
+        <div>
+            <div className="video-thumbnail">
                 <DetailViewLink contentId={content._id}>
                     <img src={content.thumbnailUrl} />
                 </DetailViewLink>
