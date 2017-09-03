@@ -40,8 +40,9 @@ export default class extends React.PureComponent {
     componentDidUpdate (prevProps) {
         const oldV = prevProps.match.params.id, 
               newV = this.props.match.params.id;
-        if (newV !== oldV)
-        this.fetchVideo();
+        if (newV !== oldV) {
+            this.fetchVideo();
+        }
     }
 
     render() {

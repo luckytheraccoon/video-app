@@ -7,26 +7,34 @@ import { buildApiUrl } from "./common";
  * Side Video list block, not an actual page, just a block that is embedded within other pages.
  * @param {object} props - The component properties from within the react context.
  */
+const initialState = {
+    requestVideos: null,
+    nextPage: 0,
+    loadedVideosCount: 0,
+    limit: 2,
+    loadedVideos: null,
+    total: null,
+    contentLoading: false
+};
+
 export default class extends React.PureComponent {
 
     constructor(props) {
         super(props);
         this.fetchVideos = this.fetchVideos.bind(this);
-        this.state = {
-            requestVideos: null,
-            nextPage: 0,
-            loadedVideosCount: 0,
-            limit: 3,
-            loadedVideos: [],
-            total: null,
-            contentLoading: false
-        }
+        this.state = initialState;
     }
 
     fetchVideos() {
 
+        let loadedVideos = [];
+
         if (this.state.contentLoading) {
             return; //halt because we're currently loading
+        }
+
+        if (this.state.loadedVideos) {
+            loadedVideos = this.state.loadedVideos;
         }
 
         this.setState({
@@ -36,8 +44,6 @@ export default class extends React.PureComponent {
         fetch(buildApiUrl(["videos", this.state.nextPage, this.state.limit, this.props.currVideo].join("/"))).then(function (response) {
             return response.json();
         }).then(function (response) {
-
-            const loadedVideos = this.state.loadedVideos;
 
             response.videos.map((video) => {
                 loadedVideos.push(
@@ -62,6 +68,19 @@ export default class extends React.PureComponent {
 
     componentDidMount() {
         this.fetchVideos();
+    }
+
+    componentDidUpdate(prevProps) {
+        const oldV = prevProps.currVideo,
+            newV = this.props.currVideo;
+        if (newV !== oldV) {
+            this.setState(
+                initialState,
+                ()=>{
+                    this.fetchVideos()
+                }
+            );
+        }
     }
 
     render() {
