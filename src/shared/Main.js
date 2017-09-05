@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 export default (props) => {
     return (
-        <div className={"div-main " + props.columnClass}>
+        <div className={props.className}>
             <MainMenu />
             <SearchForm />
             {props.children}

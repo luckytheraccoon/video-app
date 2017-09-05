@@ -35,7 +35,6 @@ sourceMapSupport.install();
 
 app.use('/static', express.static('./dist'));
 
-
 app.route('/api/videos')
     .get(controller.list_all_videos)
     .post(controller.create_a_video);
@@ -50,7 +49,6 @@ app.route('/api/video/:videoId')
     .get(controller.read_a_video)
     .put(controller.update_a_video)
     .delete(controller.delete_a_video);
-
 
 app.get('*', (req, res) => {
     const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);

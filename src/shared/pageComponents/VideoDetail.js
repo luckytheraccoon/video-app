@@ -1,10 +1,10 @@
 import React from "react";
-import Main from './Main';
-import Glyphicon from "./Glyphicon";
-import ListViewLink from "./ListViewLink";
-import VideoIframe from "./VideoIframe";
-import SideVideoList from "./SideVideoList";
-import { buildApiUrl } from "./common";
+import Main from '../Main';
+import Glyphicon from "../Glyphicon";
+import ListViewLink from "../ListViewLink";
+import VideoIframe from "../VideoIframe";
+import ItemThumbnailList from "../ItemThumbnailList";
+import { buildApiUrl } from "../common";
 /**
  * Video detail page.
  * 
@@ -47,8 +47,8 @@ export default class extends React.PureComponent {
 
     render() {
         return (
-            <Main columnClass="div--video-detail">
-                <div className="div--video-wrapper">
+            <Main className="div--item-detail">
+                <div className="div--item-wrapper">
                     <ListViewLink>
                         <div className="div--go-back-button">
                             <Glyphicon key="triangle-left" iconSuffix="triangle-left" />
@@ -60,16 +60,16 @@ export default class extends React.PureComponent {
                             <div>
                                 <VideoIframe videoUrl={this.state.videoUrl} />
                             </div>
-                            <div className="title">
+                            <div className="div--item-title">
                                 {this.state.title}
                             </div>
-                            <div className="description">
+                            <div className="div--item-description">
                                 {this.state.description}
                             </div>
                         </div>
                     </div>
                 </div>
-                <SideVideoList currVideo={this.props.match.params.id} />
+                <ItemThumbnailList apiRoute="videos" currItem={this.props.match.params.id} />
             </Main>
         );
     }

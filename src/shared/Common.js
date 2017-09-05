@@ -2,23 +2,25 @@ module.exports = {
 
     /**
      * A helper method that builds a URL based on some parameters
-     * 
-     * @param {string} requestSearchTerm - The search term to send to the server.
-     * @param {string} reqPage - The page the user is requesting.
-     * @param {int} itemLimit - The item limit to return.
-     * @param {int} itemId - A specific item ID.
      */
-    buildApiUrl: function (query) {
+    buildApiUrl: (query) => {
         return "http://localhost:3000/api/" + query;
     },
-    canUseDOM: function () {
+    jsonFetch: function(url, callbackWhenDone) {
+        fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (response) {
+            callbackWhenDone(response);
+        });
+    },
+    canUseDOM: () => {
         return !!(
             typeof window !== 'undefined' &&
             window.document &&
             window.document.createElement
         )
     },
-    optimizedResize: (function () {
+    optimizedResize: (() => {
 
         var callbacks = [],
             running = false;

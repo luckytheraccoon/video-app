@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import VideoList from './VideoList';
-import VideoDetail from './VideoDetail';
-import ImageList from './ImageList';
-import MusicList from './MusicList';
+
+import VideoList from './pageComponents/VideoList';
+import VideoDetail from './pageComponents/VideoDetail';
+import ImageList from './pageComponents/ImageList';
+import MusicList from './pageComponents/MusicList';
+
 import { Link, Route } from 'react-router-dom';
 
 export default () => (

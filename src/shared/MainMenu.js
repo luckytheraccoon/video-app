@@ -14,8 +14,8 @@ import {
  */
 export default (props) => {
     //gets the menu buttons from an "external" source
-    const menuItems = MainMenuItems().map((item) => {
-        return <li><Link to={item.route}><button key={item.id}>{item.label}</button></Link></li>;
+    const menuItems = MainMenuItems().map((item, key) => {
+        return <li key={key}><Link to={item.route}><button key={item.id}>{item.label}</button></Link></li>;
     });
     return (
         <div className={"div--main-menu " + props.className}>

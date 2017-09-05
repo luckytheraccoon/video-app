@@ -3,29 +3,29 @@
 		background:blue !important;
 	}
 	
-	.div--video-list {
-		&>.div--video-list-wrapper {
+	.div--item-list {
+		&>.div--item-list-wrapper {
 			grid-area: maincontent;
 		}
 	}
 
-	.div--video-list {
+	.div--item-list {
 		@include div-main-grid-two-col();
-		&>.div--video-list-wrapper {
-			&>.div--video-wrapper-inner { 
-				&>.div--video-inner-item {
+		&>.div--item-list-wrapper {
+			&>.div--item-wrapper-inner { 
+				&>.div--item-inner-item {
 					width: 33.3%;
 				}
 			}
 		}
 	}
 
-	.div--video-detail {
+	.div--item-detail {
 		@include div-main-grid-three-col();
-		&>.div--video-list-wrapper {
+		&>.div--item-list-wrapper {
 			align-self: start;
-			&>.div--video-wrapper-inner { 
-				&>.div--video-inner-item {
+			&>.div--item-wrapper-inner { 
+				&>.div--item-inner-item {
 					width: 100%;
 				}
 			}

@@ -6,13 +6,13 @@
 		background:yellow !important;
 	}
 
-	.div--video-list,
-	.div--video-detail {
+	.div--item-list,
+	.div--item-detail {
 		@include div-main-grid-single-col();
 	}
 
 	.div--main-menu,
-	.div--video-wrapper {
+	.div--item-wrapper {
 		grid-area: maincontent;
 	}
 
@@ -20,12 +20,12 @@
 		display:none;
 	}
 
-	.div--video-detail,
-	.div--video-list {
-		&>.div--video-list-wrapper {
+	.div--item-detail,
+	.div--item-list {
+		&>.div--item-list-wrapper {
 			grid-area: morecontent;
-			&>.div--video-wrapper-inner {
-				&>.div--video-inner-item {
+			&>.div--item-wrapper-inner {
+				&>.div--item-inner-item {
 					width: 100%;
 				}
 			}

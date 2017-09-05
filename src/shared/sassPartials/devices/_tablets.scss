@@ -4,26 +4,26 @@
 		background:red !important;
 	}
 
-	.div--video-list,
-	.div--video-detail {
+	.div--item-list,
+	.div--item-detail {
 		@include div-main-grid-two-col();
 	}
-	.div--video-detail {
-		&>.div--video-list-wrapper {
+	.div--item-detail {
+		&>.div--item-list-wrapper {
 			grid-area: morecontent;
 		}
 	}
-	.div--video-list {
-		&>.div--video-list-wrapper {
+	.div--item-list {
+		&>.div--item-list-wrapper {
 			grid-area: maincontent;
 		}
 	}
 
-	.div--video-detail,
-	.div--video-list {
-		&>.div--video-list-wrapper {
-			&>.div--video-wrapper-inner {
-				&>.div--video-inner-item {
+	.div--item-detail,
+	.div--item-list {
+		&>.div--item-list-wrapper {
+			&>.div--item-wrapper-inner {
+				&>.div--item-inner-item {
 					width: 50%;
 				}
 			}

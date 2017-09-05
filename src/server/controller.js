@@ -1,14 +1,11 @@
-'use strict';
+import mongoose from "mongoose";
+import path from "path";
 
-var mongoose = require('mongoose'),
-    Video = mongoose.model('Videos'),
-    path = require('path');
-
+const Video = mongoose.model('Videos');
 
 exports.main_route = function (req, res) {
     res.sendFile(path.join(__dirname, "..", "..", 'index.html'));
 };
-
 
 exports.list_all_videos = function (req, res) {
    
@@ -42,7 +39,7 @@ exports.list_all_videos = function (req, res) {
     });
 
     Video.find(findQuery, function (err, video) {
-        var data ={"videos":video, "total":videoCount};
+        var data ={"items":video, "total":videoCount};
         if (err)
             res.send(err);
         res.json(data);
