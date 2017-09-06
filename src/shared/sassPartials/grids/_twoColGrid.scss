@@ -1,7 +1,7 @@
 @mixin div-main-grid-two-col() {
 	display: grid;
 	grid-template: {
-		rows: [searchbar] 0fr [maincontent] 8fr [morecontent] 1fr [footer] 1fr;
+		rows: [searchbar] 0fr [maincontent] 0fr [morecontent] 0fr [footer] 0fr;
 		areas: 
 		"maincontent-left searchbar"
 		"maincontent-left maincontent"
@@ -9,5 +9,4 @@
 		"footer footer";
 		columns: [left] 1fr [right] 9fr;
 	}
-	@include full-span();
 }

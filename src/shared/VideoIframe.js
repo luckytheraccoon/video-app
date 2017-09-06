@@ -27,9 +27,6 @@ export default class extends React.PureComponent {
      * Call the resize method as soon as an iframe is created, this way it shows up correctly sized immediatly.
      */
     componentDidMount() {
-        if(!canUseDOM()){
-            return;
-        }
         const resizeCallBackObj = {
             "id":"iframe-resize",
             "method": this.resize,
@@ -43,10 +40,15 @@ export default class extends React.PureComponent {
     }
 
     render() {
-        return <iframe
-            className="iframe--video"
-            src={this.props.videoUrl}
-            frameBorder="0">
-        </iframe>;
+        //we need an extra div to encapsulate the iframe in order to serve
+        //as a helper since iframes dont resize dynamically with ease
+        //its a workaround for a tricky problem i havent looked too much into
+        return (
+                <iframe
+                    className="iframe--video"
+                    src={this.props.videoUrl}
+                    frameBorder="0">
+                </iframe>
+        );
     }
 }

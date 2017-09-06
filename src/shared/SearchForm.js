@@ -13,20 +13,10 @@ export default class extends React.PureComponent {
         this.state = {value: ''};
     }
 
-    /**
-     * Keep the search box content in state for usage.
-     * 
-     * @param {object} event - Event info.
-     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
-    /**
-     * Whenever the form is submitted, don't actually refresh the page and call a MainContainer callback.
-     * 
-     * @param {object} event - Event info.
-     */
     handleSubmit(event) {
         this.props.onSubmit(this.state.value, false, true);
         event.preventDefault();

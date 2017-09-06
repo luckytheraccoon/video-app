@@ -57,15 +57,13 @@ export default class extends React.PureComponent {
                     </ListViewLink>
                     <div>
                         <div>
-                            <div>
-                                <VideoIframe videoUrl={this.state.videoUrl} />
-                            </div>
-                            <div className="div--item-title">
-                                {this.state.title}
-                            </div>
-                            <div className="div--item-description">
-                                {this.state.description}
-                            </div>
+                            <VideoIframe videoUrl={this.state.videoUrl} />
+                        </div>
+                        <div className="div--item-title">
+                            {this.state.title}
+                        </div>
+                        <div className="div--item-description">
+                            {this.state.description}
                         </div>
                     </div>
                 </div>
