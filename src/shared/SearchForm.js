@@ -24,7 +24,7 @@ export default class extends React.PureComponent {
 
     render() {
         return(
-            <form className={"form--search-form " + this.props.className} onSubmit={this.handleSubmit}>
+            <form className="form--search-form" onSubmit={this.handleSubmit}>
                 <input className="search-box" type="text" value={this.state.value} onChange={this.handleChange} placeholder="What are you looking for?"/>
                 <input className="submit-button" type="submit" value="Search" />
             </form>

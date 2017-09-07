@@ -44,26 +44,27 @@ export default class extends React.PureComponent {
             this.state.limit,
             this.props.currItem
         ].join("/")),
-        (response) => {
-            response.items.map((item) => {
-                loadedItems.push(
-                    <ContentItemList
-                        key={item._id}
-                        contentData={item}
-                    />
-                );
-            });
+            (response) => {
 
-            this.setState({
-                requestItems: response.items,
-                loadedItemsCount: this.state.loadedItemsCount + response.items.length,
-                nextPage: this.state.nextPage + this.state.limit,
-                loadedItems: loadedItems,
-                total: response.total,
-                contentLoading: false
-            });
+                response.items.map((item) => {
+                    loadedItems.push(
+                        <ContentItemList
+                            key={item._id}
+                            contentData={item}
+                        />
+                    );
+                });
 
-        });
+                this.setState({
+                    requestItems: response.items,
+                    loadedItemsCount: this.state.loadedItemsCount + response.items.length,
+                    nextPage: this.state.nextPage + this.state.limit,
+                    loadedItems: loadedItems,
+                    total: response.total,
+                    contentLoading: false
+                });
+
+            });
 
     }
 

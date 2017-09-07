@@ -18,7 +18,7 @@ export default (props) => {
         return <li key={key}><Link to={item.route}><button key={item.id}>{item.label}</button></Link></li>;
     });
     return (
-        <div className={"div--main-menu " + props.className}>
+        <div className="div--main-menu">
             <UserBlock />
             <div className="div--main-menu-item-wrapper">
                 <ul>{menuItems}</ul>

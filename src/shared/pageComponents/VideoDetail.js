@@ -14,6 +14,7 @@ export default class extends React.PureComponent {
 
     constructor(props) {
         super(props);
+        this.fetchVideo = this.fetchVideo.bind(this);
         this.state = {
             videoUrl: null,
             title: null,

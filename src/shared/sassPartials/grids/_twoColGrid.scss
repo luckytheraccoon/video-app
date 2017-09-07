@@ -1,7 +1,8 @@
 @mixin div-main-grid-two-col() {
 	display: grid;
+	align-items: start;
 	grid-template: {
-		rows: [searchbar] 0fr [maincontent] 0fr [morecontent] 0fr [footer] 0fr;
+		rows: [searchbar] 0fr [maincontent] 1fr [morecontent] 0fr [footer] 0fr;
 		areas: 
 		"maincontent-left searchbar"
 		"maincontent-left maincontent"
